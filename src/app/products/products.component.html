@@ -1,3 +1,64 @@
-<p>
-  products works!
-</p>
+<!---
+<div class="row">
+  <div class="col-3">
+   <app-product-filter [category]="category"></app-product-filter>
+  </div>
+
+
+<div class="col">
+<div class="row">
+    <ng-container  *ngFor="let p of  filteredproducts;let i=index" >
+<div class="col"  *ngIf="cart$ | async as cart">
+   <app-product-card [product]="p" ></app-product-card>
+       
+       </div>
+       <div *ngIf="(i+1)%2===0" class="w-100"></div>
+       </ng-container>
+       </div>
+      </div>
+  
+ </div>
+--->
+ 
+ <div class="row">
+  <div class="col-3">Categories
+
+  <div class="list-group">
+  <a *ngFor="let c of categories$ | async; let i = index"   routerLink="/" [queryParams]="{category:i}" class="list-group-item list-group-item-action" 
+  
+    [class.active]="category===i"    >
+    
+   {{c.name}}
+  </a>
+
+</div>
+
+  </div>
+  <div class="col">
+        <div class="row">
+                <ng-container *ngFor="let p of  products$  | async ;let i=index" >
+                        <div class="col">
+                    <div class="card" style="width:15rem;">
+                    <img class="card-image-top" [src]="p.imageUrl" >
+                    <div class="card-body">
+                     <h4 class="card-title">{{p.title}}</h4>
+                     <p class="card-text">{{p.price}}</p>
+                     <a href="#" class="btn btn-primary">Add to card </a>
+                    <!-- <product-card [product]="p" [shopping-cart]="cart"></product-card>-->
+                    </div>
+                    </div>
+        
+                        </div>
+                        <div *ngIf="(i+1)%2===0" class="w-100"></div>
+                </ng-container>  
+        
+         </div>  
+  </div>
+ </div>
+
+
+
+
+
+
+

@@ -10,6 +10,6 @@ export class CategoryService {
 
   getCategories()
   {
-    return  this.db.list('/categories');
+    return  this.db.list('/categories').valueChanges();
 }
 }
